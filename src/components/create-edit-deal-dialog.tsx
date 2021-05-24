@@ -34,6 +34,8 @@ const CreateEditDealDialog: FC<Props> = ({
 }): ReactElement => {
   const context = useContext(Context);
 
+  // Form is created with hooks due to limited scope, but ideally we would
+  // use a form management library like Formik or Redux-Form to simplify this
   const [value, setValue] = useState(deal?.value.toString() || "");
   const [title, setTitle] = useState(deal?.title || "");
   const [valuePercentage, setValuePercentage] = useState(

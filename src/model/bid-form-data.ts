@@ -1,4 +1,3 @@
-
 import Bid from "./bid";
 
 type FromBid = Pick<Bid, "value">;

@@ -49,6 +49,7 @@ const getChipColor = (status: DealStatus) => {
   }
 };
 
+//TODO: Break this up into smaller components
 const Row: FC<RowProps> = ({
   deal,
   bids = [],

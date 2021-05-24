@@ -3,6 +3,8 @@ import Deal from "../model/deal";
 import DealApiBody from "../model/deal-api-body";
 import DealFormData from "../model/deal-form-data";
 
+//TODO: Actually do something when calls fail
+
 export async function getDeals(): Promise<Deal[]> {
   const data: Deal[] = await axios
     .get<Deal[]>(`http://localhost:1337/deals`)
