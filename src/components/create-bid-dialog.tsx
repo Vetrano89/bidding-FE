@@ -9,6 +9,7 @@ import ModalAction from "../model/modal-actions";
 import Deal from "../model/deal";
 import { Context } from "../App";
 import { useCreateBid } from "../hooks/bids-hooks";
+import { stripNonNumericCharacters } from "../utils/helpers";
 
 interface Props {
   handleClose: () => void;
@@ -28,7 +29,7 @@ const CreateBidDialog: FC<Props> = ({
   const createBid = useCreateBid();
 
   const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value);
+    setValue(stripNonNumericCharacters(e.target.value));
   };
 
   const handleCreateBid = (): void => {

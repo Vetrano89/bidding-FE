@@ -1,6 +1,4 @@
-import Party from "./party";
-import BidStatus from "./bid-status";
-import Deal from "./deal";
+
 
 interface BaseModel {
   created_at: string;

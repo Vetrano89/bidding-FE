@@ -1,4 +1,4 @@
-import BaseModel from "./base-model";
+
 
 enum BidStatus {
   SUBMITTED = "SUBMITTED",

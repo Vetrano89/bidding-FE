@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Bid from "../model/bid";
 import BidApiBody from "../model/bid-api-body";
 import { addBidToDeal } from "./deals";

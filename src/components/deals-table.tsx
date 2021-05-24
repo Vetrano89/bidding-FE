@@ -78,7 +78,7 @@ const Row: FC<RowProps> = ({
 
   return (
     <>
-      <TableRow>
+      <TableRow style={{ backgroundColor: "rgba(242, 242, 242, 1)" }}>
         <TableCell>
           <IconButton
             aria-label="expand row"
@@ -229,7 +229,6 @@ export const DealsTable: FC<TableProps> = ({
             <TableCell align="right">Value Offered</TableCell>
             <TableCell align="right">Start Date</TableCell>
             <TableCell align="right">Status</TableCell>
-            <TableCell />
             <TableCell />
           </TableRow>
         </TableHead>

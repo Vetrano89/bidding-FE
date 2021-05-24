@@ -1,4 +1,4 @@
-import BaseModel from "./base-model";
+
 
 enum DealStatus {
   PENDING_APPROVAL = "PENDING_APPROVAL",

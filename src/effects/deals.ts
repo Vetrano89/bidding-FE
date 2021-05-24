@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Deal from "../model/deal";
 import DealApiBody from "../model/deal-api-body";
 import DealFormData from "../model/deal-form-data";
@@ -32,7 +32,6 @@ export async function editDeal(deal: DealFormData): Promise<any> {
 }
 
 export async function addBidToDeal(bidId: number, deal?: Deal): Promise<any> {
-  const updatedBids = deal?.bids?.map((bid) => bid?.id).push(bidId);
   return await axios
     .put(`http://localhost:1337/deals/${deal?.id}`, {
       bids: deal?.bids?.map((bid) => bid?.id).concat([bidId]),

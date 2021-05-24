@@ -5,8 +5,7 @@ import Bid from "../model/bid";
 import Deal from "../model/deal";
 import Party from "../model/party";
 import ContextData from "../model/context-data";
-import Context from "../App";
-import { useState, useCallback, useContext, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 export function useContextValue(): ContextData {
   const [deals, setDeals] = useState<Deal[]>([]);

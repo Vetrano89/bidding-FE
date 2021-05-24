@@ -1,14 +1,10 @@
 import React, { ReactElement, FC, useContext, useState } from "react";
-import { getDeals } from "../effects/deals";
-import { getBids } from "../effects/bids";
 import Deal from "../model/deal";
-import Bid from "../model/bid";
 import DealsTable from "../components/deals-table";
 import { Context } from "../App";
 import CreateEditDealDialog from "../components/create-edit-deal-dialog";
 import CreateBidDialog from "../components/create-bid-dialog";
 import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
 import ModalActions, { ModalActionTypes } from "../model/modal-actions";
 import Header from "../components/header";
 

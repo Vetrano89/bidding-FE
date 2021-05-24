@@ -12,7 +12,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useCreateDeal, useEditDeal } from "../hooks/deals-hooks";
-import { toCurrency, getPercentOfTotal } from "../utils/helpers";
+import {
+  toCurrency,
+  getPercentOfTotal,
+  stripNonNumericCharacters,
+} from "../utils/helpers";
 import ModalAction, { ModalActionTypes } from "../model/modal-actions";
 import Deal from "../model/deal";
 import { Context } from "../App";
@@ -53,16 +57,16 @@ const CreateEditDealDialog: FC<Props> = ({
   };
 
   const handleSetValue = (e: ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value);
+    setValue(stripNonNumericCharacters(e.target.value));
   };
 
   const handleSetStartingBid = (e: ChangeEvent<HTMLInputElement>): void => {
-    setStartingBid(e.target.value);
+    setStartingBid(stripNonNumericCharacters(e.target.value));
   };
 
   const handleSetValuePercentage = (e: ChangeEvent<HTMLInputElement>): void => {
-    setValuePercentage(e.target.value);
-    validatePercentage(e.target.value);
+    setValuePercentage(stripNonNumericCharacters(e.target.value));
+    validatePercentage(stripNonNumericCharacters(e.target.value));
   };
 
   const handleCreateEditDeal = (): void => {

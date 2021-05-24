@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Party from "../model/party";
 
 export async function getParties(): Promise<Party[]> {
