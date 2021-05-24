@@ -39,6 +39,9 @@ const Header: FC<Props> = ({ setShowDealModal }): ReactElement => {
       <Button
         onClick={() => setShowDealModal(ModalActionTypes.CREATE)}
         variant="contained"
+        style={{ marginLeft: "48px" }}
+        size="large"
+        color="primary"
       >
         Create new Deal
       </Button>
