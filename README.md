@@ -1,4 +1,4 @@
-### TPL Code Sample (Frontend)
+# TPL Code Sample (Frontend)
 
 **You must have the accompanying Strapi backend running for this application to work**
 [https://github.com/Vetrano89/tpl-code-sample-BE](https://github.com/Vetrano89/tpl-code-sample-BE)
@@ -28,7 +28,7 @@ react-scripts start
 
 This will open the application in a browser at [http://localhost:3000](http://localhost:3000)
 
-### `react-scripts start`
+##### `react-scripts start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
