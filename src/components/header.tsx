@@ -18,6 +18,19 @@ const Header: FC<Props> = ({ setShowDealModal }): ReactElement => {
     context?.setPartyId(parseInt(e.target.value as string));
   };
 
+  if (!context?.parties.length) {
+    return (
+      <>
+        <h3>
+          You're seeing this page because either there are no parties created in
+          Strapi or the Strapi server isn't running.
+        </h3>
+        <div>Ensure that the Strapi backend is running on localhost:1337</div>
+        <div>Ensure there are parties created in Strapi.</div>
+      </>
+    );
+  }
+
   return (
     <>
       <FormControl>
