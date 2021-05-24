@@ -30,7 +30,7 @@ const Header: FC<Props> = ({ setShowDealModal }): ReactElement => {
         >
           <option aria-label="None" value="" />
           {context?.parties.map((party) => (
-            <option aria-label="None" value={party.id}>
+            <option aria-label="None" value={party.id} key={party.id}>
               {party.name}
             </option>
           ))}
