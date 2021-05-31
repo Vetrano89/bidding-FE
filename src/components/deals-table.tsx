@@ -21,10 +21,10 @@ import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 import { Context } from "../App";
 import { getPercentOfTotal } from "../utils/helpers";
-
+import DealStatusLabel from "./deal-status-label";
 import { parseISO, format } from "date-fns";
 import { toCurrency } from "../utils/helpers";
-
+import DealTableActionButton from "./deal-table-action-button";
 import { useAcceptBid } from "../hooks/bids-hooks";
 
 type Sort = "asc" | "desc" | undefined;
@@ -35,19 +35,6 @@ interface RowProps {
   canEdit: boolean;
   dealAction: (arg0: Deal) => void;
 }
-
-const getChipColor = (status: DealStatus) => {
-  switch (status) {
-    case DealStatus.ACTIVE:
-      return "secondary";
-    case DealStatus.COMPLETE:
-      return "primary";
-    case DealStatus.CANCELLED:
-      return "default";
-    default:
-      return "default";
-  }
-};
 
 //TODO: Break this up into smaller components
 const Row: FC<RowProps> = ({
@@ -97,27 +84,20 @@ const Row: FC<RowProps> = ({
         <TableCell align="right">
           {toCurrency(getPercentOfTotal(deal.value, deal.valuePercentage))}
         </TableCell>
+        <TableCell align="right">{toCurrency(deal.startingBid)}</TableCell>
         <TableCell align="right">
           {format(parseISO(deal.created_at), "MM/dd/yyyy")}
         </TableCell>
         <TableCell align="right">
-          <Chip
-            color={getChipColor(deal.status)}
-            size="small"
-            label={<strong>{deal.status}</strong>}
-          />
+          <DealStatusLabel deal={deal} />
         </TableCell>
         <TableCell align="right">
-          {deal?.status === DealStatus.ACTIVE && (
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={() => dealAction(deal)}
-              style={{ width: "105px" }}
-            >
-              {canEdit ? "Edit" : "Place bid"}
-            </Button>
-          )}
+          <DealTableActionButton
+            deal={deal}
+            canEdit={canEdit}
+            isAdmin={context?.party.isAdmin}
+            dealAction={dealAction}
+          />
         </TableCell>
       </TableRow>
       <TableRow>
@@ -185,7 +165,7 @@ const Row: FC<RowProps> = ({
                               )}
                               {bid?.status === BidStatus.ACCEPTED && (
                                 <Chip
-                                  color={getChipColor(deal.status)}
+                                  color="primary"
                                   size="small"
                                   label={<strong>Accepted</strong>}
                                   style={{ backgroundColor: "green" }}
@@ -228,6 +208,7 @@ export const DealsTable: FC<TableProps> = ({
             <TableCell align="right">Total Value</TableCell>
             <TableCell align="right">Value Percentage</TableCell>
             <TableCell align="right">Value Offered</TableCell>
+            <TableCell align="right">Starting Bid</TableCell>
             <TableCell align="right">Start Date</TableCell>
             <TableCell align="right">Status</TableCell>
             <TableCell />

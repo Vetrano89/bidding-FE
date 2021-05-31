@@ -8,8 +8,6 @@ interface Bid extends BaseModel {
   deal: Deal;
   status: BidStatus;
   party: Party;
-  created_at: string;
-  id: number;
 }
 
 export default Bid;

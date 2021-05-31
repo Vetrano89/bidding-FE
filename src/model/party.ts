@@ -8,6 +8,7 @@ interface Party extends BaseModel {
   businessName: string;
   deals: Deal[];
   bids: Bid[];
+  isAdmin: boolean;
 }
 
 export default Party;

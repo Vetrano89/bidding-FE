@@ -1,5 +1,6 @@
 import React, { ReactElement, FC, useContext, useState } from "react";
 import Deal from "../model/deal";
+import DealStatus from "../model/deal-status";
 import DealsTable from "../components/deals-table";
 import { Context } from "../App";
 import CreateEditDealDialog from "../components/create-edit-deal-dialog";
@@ -23,6 +24,28 @@ const Overview: FC<any> = (): ReactElement => {
     setShowBidModal(ModalActionTypes.CREATE);
     setDealToEdit(deal);
   };
+
+  const handleApproveDeal = (deal: Deal): void => {
+    setDealToEdit(deal);
+  };
+
+  if (context.party?.isAdmin) {
+    return (
+      <Container maxWidth="lg" style={{ paddingTop: "16px" }}>
+        <h2>All pending deals</h2>
+        <DealsTable
+          party={context?.partyId}
+          deals={
+            context?.deals.filter(
+              (deal) => deal.status === DealStatus.PENDING_APPROVAL
+            ) || []
+          }
+          bids={context?.bids || []}
+          dealAction={(deal) => handleApproveDeal(deal)}
+        />
+      </Container>
+    );
+  }
 
   return (
     <Container maxWidth="lg" style={{ paddingTop: "16px" }}>

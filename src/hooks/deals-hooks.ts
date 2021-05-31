@@ -5,7 +5,7 @@ import { useCallback } from "react";
 
 export function useCreateDeal(): (deal: DealFormData) => Promise<any> {
   return useCallback((deal: DealFormData) => {
-    return createDeal({ ...deal, status: DealStatus.ACTIVE });
+    return createDeal({ ...deal, status: DealStatus.PENDING_APPROVAL });
   }, []);
 }
 
